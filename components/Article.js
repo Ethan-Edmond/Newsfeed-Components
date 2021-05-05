@@ -87,3 +87,7 @@ data.forEach(obj => {
   let article = articleMaker(obj);
   articleContainer.append(article);
 });
+
+function articleConstructor(dataObj){
+  articleContainer.append(articleMaker(dataObj));
+}
