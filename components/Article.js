@@ -38,6 +38,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   let articleP2 = document.createElement("p");
   let articleP3 = document.createElement("p");
   let articleExpand = document.createElement("span");
+  let articleRead = document.createElement("button");
 
   // creating structure
   article.append(articleTitle);
@@ -46,6 +47,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   article.append(articleP2);
   article.append(articleP3);
   article.append(articleExpand);
+  article.append(articleRead);
 
   // adding classes
   article.classList.add("article");
@@ -59,6 +61,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articleP2.textContent = secondParagraph;
   articleP3.textContent = thirdParagraph;
   articleExpand.textContent = "Click to expand";
+  articleRead.textContent = "Mark as read";
 
   // expand button event listener
   articleExpand.addEventListener("click", event => {
@@ -70,6 +73,10 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
     }
   });
 
+  // read button event listener
+  articleRead.addEventListener("click", event => {
+    article.parentNode.removeChild(article);
+  });
 
   return article;
 }
