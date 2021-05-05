@@ -75,18 +75,15 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
       }});
       articleExpand.textContent = "Click to retract";
     } else {
+      articleContent.scroll(0,0);
+      articleContent.style.overflow = "hidden";
       gsap.to(article, {duration: 0.5, height: "50px", onComplete: function(){
         articleContent.style.height = "50px";
-        articleContent.style.overflow = "hidden";
       }});
       articleExpand.textContent = "Click to expand";
     }
   });
 
-  // article scroll event listener
-  article.addEventListener("scroll", event => {
-    articleExpand.style.bottom = "0";
-  });
   // read button event listener
   articleRead.addEventListener("click", event => {
     article.parentNode.removeChild(article);
