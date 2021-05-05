@@ -153,5 +153,11 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articleP3.textContent = thirdParagraph;
   articleExpand.textContent = "+";
 
+  // expand button event listener
+  articleExpand.addEventListener("click", event => {
+    article.classList.toggle("article-open");
+  });
+
+
   return article;
 }
