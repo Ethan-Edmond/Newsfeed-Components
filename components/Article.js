@@ -161,3 +161,10 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
 
   return article;
 }
+
+let articleContainer = document.querySelector("div.articles");
+
+data.forEach(obj => {
+  let article = articleMaker(obj);
+  articleContainer.append(article);
+});
