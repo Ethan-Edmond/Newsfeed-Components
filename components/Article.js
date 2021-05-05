@@ -42,6 +42,8 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   const articleRead = document.createElement("button");
   const articleContent = document.createElement("div");
 
+  articleContent.style.maxHeight = "400px";
+
   // creating structure
   articleContent.append(articleTitle);
   articleContent.append(articleDate);
@@ -70,7 +72,6 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articleExpand.addEventListener("click", event => {
     if (articleExpand.textContent === "Click to expand"){
       gsap.to(article, {duration: 0.5, height: "400px", onComplete: function(){
-        articleContent.style.height = "400px";
         articleContent.style.overflow = "auto";
       }});
       articleExpand.textContent = "Click to retract";
@@ -78,7 +79,6 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
       articleContent.scroll(0,0);
       articleContent.style.overflow = "hidden";
       gsap.to(article, {duration: 0.5, height: "50px", onComplete: function(){
-        articleContent.style.height = "50px";
       }});
       articleExpand.textContent = "Click to expand";
     }

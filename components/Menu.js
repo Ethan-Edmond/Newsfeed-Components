@@ -50,11 +50,11 @@ function menuMaker(itemAry){
   menuButton.addEventListener("click", event => {
     if (menu.style.left === "-350px") {
       gsap.to(menu, {duration: 0.2, left: 0, onStart: function(){
-        menu.classList.add("menu--open");
+        menu.classList.add("menu-open");
       }});
     } else {
       gsap.to(menu, {duration: 0.2, left: "-350px", onComplete: function(){
-          menu.classList.remove("menu--open");
+          menu.classList.remove("menu-open");
       }});
     }
   });
