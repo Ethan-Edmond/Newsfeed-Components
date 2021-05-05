@@ -32,23 +32,25 @@ import { gsap } from "gsap";
 */
 function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}){
   // creating elems
-  let article = document.createElement("div");
-  let articleTitle = document.createElement("h2");
-  let articleDate = document.createElement("p");
-  let articleP1 = document.createElement("p");
-  let articleP2 = document.createElement("p");
-  let articleP3 = document.createElement("p");
-  let articleExpand = document.createElement("span");
-  let articleRead = document.createElement("button");
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const articleP1 = document.createElement("p");
+  const articleP2 = document.createElement("p");
+  const articleP3 = document.createElement("p");
+  const articleExpand = document.createElement("span");
+  const articleRead = document.createElement("button");
+  const articleContent = document.createElement("div");
 
   // creating structure
-  article.append(articleTitle);
-  article.append(articleDate);
-  article.append(articleP1);
-  article.append(articleP2);
-  article.append(articleP3);
+  articleContent.append(articleTitle);
+  articleContent.append(articleDate);
+  articleContent.append(articleP1);
+  articleContent.append(articleP2);
+  articleContent.append(articleP3);
+  articleContent.append(articleRead);
+  article.append(articleContent);
   article.append(articleExpand);
-  article.append(articleRead);
 
   // adding classes
   article.classList.add("article");
@@ -68,17 +70,23 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articleExpand.addEventListener("click", event => {
     if (articleExpand.textContent === "Click to expand"){
       gsap.to(article, {duration: 0.5, height: "400px", onComplete: function(){
-        article.style.overflow = "auto";
+        articleContent.style.height = "400px";
+        articleContent.style.overflow = "auto";
       }});
       articleExpand.textContent = "Click to retract";
     } else {
-      gsap.to(article, {duration: 0.5, height: "50px", onStart: function(){
-        article.style.overflow = "hidden";
+      gsap.to(article, {duration: 0.5, height: "50px", onComplete: function(){
+        articleContent.style.height = "50px";
+        articleContent.style.overflow = "hidden";
       }});
       articleExpand.textContent = "Click to expand";
     }
   });
 
+  // article scroll event listener
+  article.addEventListener("scroll", event => {
+    articleExpand.style.bottom = "0";
+  });
   // read button event listener
   articleRead.addEventListener("click", event => {
     article.parentNode.removeChild(article);
