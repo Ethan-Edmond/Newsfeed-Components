@@ -58,11 +58,16 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   articleP1.textContent = firstParagraph;
   articleP2.textContent = secondParagraph;
   articleP3.textContent = thirdParagraph;
-  articleExpand.textContent = "+";
+  articleExpand.textContent = "Click to expand";
 
   // expand button event listener
   articleExpand.addEventListener("click", event => {
     article.classList.toggle("article-open");
+    if (articleExpand.textContent === "Click to expand"){
+      articleExpand.textContent = "Click to retract";
+    } else {
+      articleExpand.textContent = "Click to expand";
+    }
   });
 
 
