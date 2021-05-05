@@ -3,6 +3,7 @@
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 
 import data from './data/articleData';
+import { gsap } from "gsap";
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
