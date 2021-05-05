@@ -143,7 +143,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   // adding classes
   article.classList.add("article");
   articleDate.classList.add("date");
-  articleExpand.classList.add("expand-button");
+  articleExpand.classList.add("expandButton");
 
   // setting text content
   articleTitle.textContent = title;
