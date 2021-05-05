@@ -1,6 +1,7 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -86,6 +87,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "test article",
+    date: "Today",
+    firstParagraph: "asdfsdfcxvvl;kfjkwerasdflkjxc",
+    secondParagraph: "imjtojnrtjlfjhkvslkjhdflvkhsvlekrh",
+    thirdParagraph: "jlkxcvnmasdfkjwerfifasdfjklasd"
   }
 ];
 
@@ -114,3 +122,36 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+  // creating elems
+  let article = document.createElement("div");
+  let articleTitle = document.createElement("h2");
+  let articleDate = document.createElement("p");
+  let articleP1 = document.createElement("p");
+  let articleP2 = document.createElement("p");
+  let articleP3 = document.createElement("p");
+  let articleExpand = document.createElement("span");
+
+  // creating structure
+  article.append(articleTitle);
+  article.append(articleDate);
+  article.append(articleP1);
+  article.append(articleP2);
+  article.append(articleP3);
+  article.append(articleExpand);
+
+  // adding classes
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  articleExpand.classList.add("expand-button");
+
+  // setting text content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
+  articleExpand.textContent = "+";
+
+  return article;
+}
