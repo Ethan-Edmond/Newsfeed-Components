@@ -40,4 +40,11 @@ function menuMaker(menuItems){
     listItem.textContent = item;
     list.append(listItem);
   });
+  menu.append(list);
+
+  const menuButton = document.querySelector("img.menu-button");
+  menuButton.addEventListener("click", event => {
+    menu.classList.toggle("menu--open");
+  });
+  return menu;
 }
