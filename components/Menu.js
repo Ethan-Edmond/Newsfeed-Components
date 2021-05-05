@@ -1,5 +1,7 @@
 // This is the data we will be using, study it but don't change anything, yet.
 
+import { gsap } from "gsap";
+
 let menuItems = [
   'Students',
   'Faculty',
@@ -35,6 +37,7 @@ let menuItems = [
 function menuMaker(itemAry){
   const menu = document.createElement("div");
   menu.classList.add("menu");
+  menu.style.left = "-350px";
   const list = document.createElement("ul");
   itemAry.forEach(item => {
     let listItem = document.createElement("li");
@@ -45,7 +48,15 @@ function menuMaker(itemAry){
 
   const menuButton = document.querySelector("img.menu-button");
   menuButton.addEventListener("click", event => {
-    menu.classList.toggle("menu--open");
+    if (menu.style.left === "-350px") {
+      gsap.to(menu, {duration: 0.2, left: 0, onStart: function(){
+        menu.classList.add("menu--open");
+      }});
+    } else {
+      gsap.to(menu, {duration: 0.2, left: "-350px", onComplete: function(){
+          menu.classList.remove("menu--open");
+      }});
+    }
   });
   return menu;
 }
