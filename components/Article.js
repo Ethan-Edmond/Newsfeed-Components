@@ -66,10 +66,15 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
 
   // expand button event listener
   articleExpand.addEventListener("click", event => {
-    article.classList.toggle("article-open");
     if (articleExpand.textContent === "Click to expand"){
+      gsap.to(article, {duration: 0.5, height: "400px", onComplete: function(){
+        article.style.overflow = "auto";
+      }});
       articleExpand.textContent = "Click to retract";
     } else {
+      gsap.to(article, {duration: 0.5, height: "50px", onStart: function(){
+        article.style.overflow = "hidden";
+      }});
       articleExpand.textContent = "Click to expand";
     }
   });
